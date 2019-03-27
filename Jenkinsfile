@@ -1,5 +1,3 @@
-def repoName = "spring-petclinic"
-
 node {
 stage ('Build') {
     stage('Clone Repository') {
