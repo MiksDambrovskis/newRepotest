@@ -29,7 +29,7 @@ stage ('Build') {
          //Remove maven-build-container if it exists
         sh " docker rm -f java-deploy-container"
        
-        sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8080:8080 denisdbell/petclinic-deploy"
+        sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8090:8090 denisdbell/petclinic-deploy"
    }
 }
 }
