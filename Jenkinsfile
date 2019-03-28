@@ -24,8 +24,8 @@ stage ('Build') {
         sh "docker run --rm --name maven-build-container maven-build"
    }
    stage('Deploy on tomcat'){
-   sshagent(['tomcat-dev']) {
-    sh "scp -o StrictHostKeyChecking=no target/* .war ec2-user@ec2-34-242-158-21:/opt/tomcat8/webapps/"
+   sshagent(['7686c1a6-a1dd-4eb3-9361-8eac97aebc47']) {
+    sh "scp -o StrictHostKeyChecking=no target/* .war ubuntu@ec2-34-242-158-21:/opt/tomcat8/webapps/"
 }
 }
    
