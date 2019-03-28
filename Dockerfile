@@ -60,3 +60,4 @@ CMD java -javaagent:/app/elastic-apm-agent.jar\
                                        -Delastic.apm.log_file=/var/log/apps/apm-spring-petclinic\
                                        -Delastic.apm.enable_log_correlation=true\
                                        -jar /app/app.jar
+                                       -jar target/spring-petclinic-1.5.1.jar
