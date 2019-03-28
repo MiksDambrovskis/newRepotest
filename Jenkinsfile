@@ -8,12 +8,12 @@ stage ('Build') {
     }
     stage('Clone Repository') {
         // Get some code from a GitHub repository
-        git 'https://github.com/denisdbell/spring-petclinic.git'
+        git 'https://bitbucket.org/RenatsA/spring-petclinic-renats2.git'
     
    }
    stage('Deploy on tomcat'){
    sshagent(['tomcat-dev']) {
-    sh "scp -o StrictHostKeyChecking=no target/* .war ec2-user@172.31.30.244:/opt/tomcat8/webapps/"
+    sh "scp -o StrictHostKeyChecking=no target/* .war ec2-user@52.213.91.16:/opt/tomcat8/webapps/"
 }
 }
    
