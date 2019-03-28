@@ -11,18 +11,6 @@ stage ('Build') {
         git 'https://github.com/denisdbell/spring-petclinic.git'
     
    }
-   stage('Build Maven Image') {
-        docker.build("maven-build") 
-        }
-   
-   stage('Run Maven Container') {
-       
-        //Remove maven-build-container if it exists
-        sh " docker rm -f maven-build-container"
-        
-        //Run maven image
-        sh "docker run --rm --name maven-build-container maven-build"
-   }
    stage('Deploy on tomcat'){
    sshagent(['tomcat-dev']) {
     sh "scp -o StrictHostKeyChecking=no target/* .war ec2-user@172.31.30.244:/opt/tomcat8/webapps/"
