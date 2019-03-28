@@ -8,7 +8,7 @@ stage ('Build') {
     }
     stage('Clone Repository') {
         // Get some code from a GitHub repository
-        git 'https://bitbucket.org/RenatsA/spring-petclinic-renats2.git'
+        git 'https://github.com/spring-projects/spring-petclinic.git'
     
    }
     stage('Build Maven Image') {
@@ -34,7 +34,7 @@ stage ('Build') {
          //Remove maven-build-container if it exists
         sh " docker rm -f java-deploy-container"
        
-        sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8089:8089 denisdbell/petclinic-deploy"
+        sh "docker run --name java-deploy-container --volumes-from maven-build-container -d -p 8080:8080 denisdbell/petclinic-deploy"
    }
 }
 }
