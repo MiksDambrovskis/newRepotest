@@ -23,6 +23,11 @@ stage ('Build') {
         //Run maven image
         sh "docker run --rm --name maven-build-container maven-build"
    }
+   stage('Deploy on tomcat'){stage('Deploy on tomcat'){
+   sshagent(['tomcat-dev']) {
+    sh "scp -o StrictHostKeyChecking=no target/* .war ec2-user@172.31.30.244:/opt/tomcat8/webapps/"
+}
+}
    
    stage('Deploy Spring Boot Application') {
         
