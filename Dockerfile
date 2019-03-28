@@ -27,6 +27,11 @@ FROM openjdk:10
 RUN export
 WORKDIR /app
 
+WORKDIR /app
+COPY . . 
+RUN mvn package 
+EXPOSE 8080 
+
 COPY --from=0 /usr/src/java-app/*.jar ./
 CMD java -javaagent:/app/elastic-apm-agent.jar\
                                        -Dspring.profiles.active=${JAVA_PROFILE:-hsqldb,spring-data-jpa}\
